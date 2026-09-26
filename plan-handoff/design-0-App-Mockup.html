@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RTO Compliance Automator — App Mockup</title>
+<style>
+:root{
+  --bg:#eef1f8;--paper:#fff;--ink:#172033;--muted:#667085;--line:#dfe4ee;
+  --primary:#4f46e5;--primary-soft:#eef2ff;--green:#14804a;--green-soft:#eaf8f0;
+  --amber:#a15c00;--amber-soft:#fff5df;--red:#c83232;--red-soft:#fff0f0;
+  --nav:#111827;--nav-muted:#9ca3af;--shadow:0 18px 50px rgba(31,41,55,.10);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+.screen-wrap{max-width:1440px;margin:34px auto 70px;padding:0 22px}
+.screen-band{padding:13px 17px;background:#202633;color:#fff;font-size:13px;letter-spacing:.01em;border-radius:10px 10px 0 0}
+.screen{min-height:820px;background:var(--paper);border:1px solid #d6dce8;border-top:0;border-radius:0 0 14px 14px;overflow:hidden;box-shadow:var(--shadow)}
+button{font:inherit}
+.icon-btn{width:36px;height:36px;border:1px solid var(--line);background:#fff;border-radius:9px;color:#596174}
+.btn{height:40px;border-radius:9px;padding:0 15px;border:1px solid var(--line);background:#fff;color:var(--ink);font-weight:650}
+.btn.primary{background:var(--primary);color:#fff;border-color:var(--primary)}
+.btn.soft{background:var(--primary-soft);color:var(--primary);border-color:#d9dcff}
+.label{font-size:12px;color:var(--muted);font-weight:650}
+.pill{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 9px;font-size:12px;font-weight:700}
+.dot{width:7px;height:7px;border-radius:50%;background:currentColor}
+.good{color:var(--green);background:var(--green-soft)}
+.warn{color:var(--amber);background:var(--amber-soft)}
+.bad{color:var(--red);background:var(--red-soft)}
+.neutral{color:#475467;background:#f2f4f7}
+
+/* auth */
+.auth-screen{display:grid;grid-template-columns:1.02fr .98fr}
+.auth-brand{position:relative;padding:72px;background:linear-gradient(145deg,#19213c 0%,#2d287d 62%,#5148c7 100%);color:#fff;overflow:hidden}
+.auth-brand:before,.auth-brand:after{content:"";position:absolute;border:1px solid rgba(255,255,255,.12);border-radius:50%}
+.auth-brand:before{width:520px;height:520px;right:-170px;bottom:-230px}
+.auth-brand:after{width:310px;height:310px;right:-60px;bottom:-130px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.02em}
+.logo-mark{display:grid;place-items:center;width:38px;height:38px;border-radius:10px;background:#fff;color:var(--primary)}
+.auth-brand h1{font-size:48px;line-height:1.08;letter-spacing:-.045em;max-width:580px;margin:150px 0 20px}
+.auth-brand p{max-width:540px;color:#d8dcff;font-size:17px;line-height:1.65}
+.trust-row{display:flex;gap:22px;margin-top:44px;color:#eef0ff;font-size:13px}
+.auth-panel{display:grid;place-items:center;padding:62px}
+.auth-card{width:100%;max-width:440px}
+.auth-card h2{font-size:30px;letter-spacing:-.035em;margin:0 0 8px}
+.auth-card>p{color:var(--muted);margin:0 0 30px}
+.tabs{display:grid;grid-template-columns:1fr 1fr;background:#f4f5f8;padding:4px;border-radius:10px;margin-bottom:26px}
+.tab{padding:10px;text-align:center;border-radius:7px;font-weight:700;font-size:14px}
+.tab.active{background:#fff;box-shadow:0 2px 8px rgba(16,24,40,.08)}
+.field{margin:0 0 17px}
+.field label{display:block;font-size:13px;font-weight:700;margin-bottom:7px}
+.input{height:46px;border:1px solid #cfd5e2;border-radius:9px;padding:0 13px;display:flex;align-items:center;color:#98a2b3}
+.auth-submit{height:48px;width:100%;border:0;border-radius:9px;background:var(--primary);color:#fff;font-weight:750;margin-top:5px}
+.auth-note{margin-top:22px;padding:13px;background:#f7f8fb;border:1px solid var(--line);border-radius:9px;color:var(--muted);font-size:12px;line-height:1.5}
+
+/* app shell */
+.shell{display:grid;grid-template-columns:232px 1fr;min-height:820px}
+.sidebar{background:var(--nav);color:#fff;padding:24px 16px;display:flex;flex-direction:column}
+.sidebar .logo{padding:0 8px 26px}
+.nav-title{font-size:10px;color:#70798b;letter-spacing:.12em;font-weight:800;padding:14px 11px 8px}
+.nav-item{padding:11px 12px;border-radius:8px;color:#aeb5c3;font-size:13px;font-weight:650;margin:2px 0;display:flex;gap:10px;align-items:center}
+.nav-item.active{color:#fff;background:#2d3442}
+.nav-ico{width:18px;text-align:center}
+.sidebar-foot{margin-top:auto;padding:15px 10px;border-top:1px solid #2b3443}
+.user{display:flex;align-items:center;gap:10px}
+.avatar{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#c7d2fe;color:#3730a3;font-size:12px;font-weight:800}
+.user small{color:var(--nav-muted)}
+.main{background:#f8f9fc}
+.topbar{height:68px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 28px}
+.crumb{color:var(--muted);font-size:13px}
+.crumb b{color:var(--ink)}
+.top-actions{display:flex;align-items:center;gap:10px}
+.content{padding:26px 28px}
+.heading{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:23px}
+.heading h2{margin:0 0 5px;font-size:25px;letter-spacing:-.035em}
+.heading p{margin:0;color:var(--muted);font-size:13px}
+.actions{display:flex;gap:9px}
+.card{background:#fff;border:1px solid var(--line);border-radius:11px}
+.metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:17px}
+.metric{padding:18px}
+.metric-top{display:flex;justify-content:space-between;align-items:center}
+.metric strong{display:block;font-size:28px;margin-top:12px;letter-spacing:-.04em}
+.metric small{color:var(--muted)}
+.change{font-size:11px;font-weight:750;color:var(--green)}
+.dash-grid{display:grid;grid-template-columns:1.55fr .85fr;gap:17px}
+.card-head{display:flex;align-items:center;justify-content:space-between;padding:17px 18px;border-bottom:1px solid var(--line)}
+.card-head h3{font-size:14px;margin:0}
+.card-head span{font-size:12px;color:var(--muted)}
+.timeline{padding:10px 18px 17px}
+.run-row{display:grid;grid-template-columns:66px 24px 1fr auto;gap:11px;align-items:center;padding:15px 0;border-bottom:1px solid #edf0f5;font-size:13px}
+.run-row:last-child{border:0}
+.run-node{width:10px;height:10px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px var(--green-soft)}
+.run-node.next{background:var(--primary);box-shadow:0 0 0 4px var(--primary-soft)}
+.run-node.pending{background:#cbd2df;box-shadow:none}
+.sources{padding:10px 18px 16px}
+.source{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-bottom:1px solid #edf0f5}
+.source:last-child{border:0}
+.source b{font-size:13px}.source small{display:block;color:var(--muted);margin-top:3px}
+.alert-strip{margin-top:17px;display:flex;justify-content:space-between;align-items:center;padding:15px 18px;background:var(--amber-soft);border:1px solid #f4d99f;border-radius:10px}
+.alert-strip b{font-size:13px}.alert-strip span{font-size:12px;color:#76501a}
+
+/* table/run */
+.filterbar{display:flex;gap:9px;margin-bottom:15px}
+.search{height:39px;min-width:260px;border:1px solid var(--line);background:#fff;border-radius:8px;color:#98a2b3;padding:10px 13px;font-size:12px}
+.filter{height:39px;border:1px solid var(--line);background:#fff;border-radius:8px;padding:0 12px;color:#475467;font-size:12px}
+.run-layout{display:grid;grid-template-columns:minmax(0,1fr) 315px;gap:17px}
+.table-card{overflow:hidden}
+table{border-collapse:collapse;width:100%;font-size:12px}
+th{text-align:left;background:#fafbfc;color:#667085;padding:12px 13px;border-bottom:1px solid var(--line);font-size:10px;letter-spacing:.04em;text-transform:uppercase}
+td{padding:13px;border-bottom:1px solid #edf0f5}
+tr.selected{background:#f4f5ff}
+.person{font-weight:750}.sub{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+.detail{padding:20px}
+.detail h3{font-size:16px;margin:0 0 4px}
+.detail>p{color:var(--muted);font-size:12px;margin:0 0 20px}
+.explain{padding:14px;border-radius:9px;background:var(--red-soft);border:1px solid #ffd0d0;margin-bottom:17px}
+.explain b{display:block;color:var(--red);font-size:12px;margin-bottom:5px}
+.explain p{font-size:12px;line-height:1.5;margin:0}
+.fact{display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid #edf0f5;font-size:12px}
+.fact span:first-child{color:var(--muted)}
+.privacy{margin-top:18px;padding:13px;background:#f7f8fb;border-radius:8px;font-size:11px;color:var(--muted);line-height:1.5}
+
+/* reports */
+.summary-banner{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;padding:22px;margin-bottom:17px;background:linear-gradient(100deg,#252b52,#37318d);color:#fff;border-radius:12px}
+.summary-banner h3{margin:0 0 7px}.summary-banner p{margin:0;color:#d7d9f4;font-size:12px}
+.banner-stats{display:flex;gap:34px}
+.banner-stat strong{display:block;font-size:24px}.banner-stat small{color:#d7d9f4}
+.report-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:17px}
+.report-list{padding:0 18px}
+.report-row{display:grid;grid-template-columns:42px 1fr auto;gap:12px;align-items:center;padding:16px 0;border-bottom:1px solid #edf0f5}
+.file-icon{width:38px;height:38px;display:grid;place-items:center;border-radius:8px;background:var(--green-soft);color:var(--green);font-weight:850;font-size:11px}
+.report-row b{font-size:13px}.report-row small{display:block;color:var(--muted);margin-top:4px}
+.audit-list{padding:5px 18px 14px}
+.audit{display:grid;grid-template-columns:12px 1fr;gap:10px;padding:12px 0}
+.audit-line{position:relative}
+.audit-line:before{content:"";position:absolute;width:2px;background:#e3e6ed;top:14px;bottom:-18px;left:3px}
+.audit:last-child .audit-line:before{display:none}
+.audit-line:after{content:"";position:absolute;width:8px;height:8px;border-radius:50%;background:var(--primary);top:5px}
+.audit b{font-size:12px}.audit small{display:block;color:var(--muted);margin-top:4px;line-height:1.4}
+@media(max-width:900px){
+  .auth-screen{grid-template-columns:1fr}.auth-brand{display:none}.shell{grid-template-columns:1fr}.sidebar{display:none}
+  .metrics,.dash-grid,.run-layout,.report-grid{grid-template-columns:1fr}.screen{min-height:auto}.banner-stats{display:none}
+}
+</style>
+</head>
+<body>
+
+<section class="screen-wrap">
+  <div class="screen-band">Screen 1 of 4 · Login + Sign Up · Secure entry for approved HR and administrators</div>
+  <div class="screen auth-screen">
+    <div class="auth-brand">
+      <div class="logo"><span class="logo-mark">R</span> RTO Compliance</div>
+      <h1>Office attendance, reconciled automatically.</h1>
+      <p>Turn daily form responses and roster schedules into timely reminders, clear exceptions, and audit-ready reports.</p>
+      <div class="trust-row"><span>✓ HR-only access</span><span>✓ Traceable decisions</span><span>✓ Microsoft connected</span></div>
+    </div>
+    <div class="auth-panel">
+      <div class="auth-card">
+        <h2>Welcome back</h2>
+        <p>Sign in with your approved company account.</p>
+        <div class="tabs"><div class="tab active">Log in</div><div class="tab">Create account</div></div>
+        <div class="field"><label>Company email</label><div class="input">name@company.com</div></div>
+        <div class="field"><label>Password</label><div class="input">••••••••••••</div></div>
+        <button class="auth-submit">Log in securely</button>
+        <div class="auth-note">New accounts require administrator approval. WFH reasons and exception reports are available only to authorized HR users.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="screen-wrap">
+  <div class="screen-band">Screen 2 of 4 · Operations Dashboard · Monitor today’s scheduled reconciliations and compliance state</div>
+  <div class="screen shell">
+    <aside class="sidebar">
+      <div class="logo"><span class="logo-mark">R</span> RTO Compliance</div>
+      <div class="nav-title">OPERATIONS</div>
+      <div class="nav-item active"><span class="nav-ico">◫</span>Today</div>
+      <div class="nav-item"><span class="nav-ico">≡</span>Runs</div>
+      <div class="nav-item"><span class="nav-ico">▤</span>Reports</div>
+      <div class="nav-title">ADMIN</div>
+      <div class="nav-item"><span class="nav-ico">◎</span>Connections</div>
+      <div class="nav-item"><span class="nav-ico">⌁</span>Schedules</div>
+      <div class="nav-item"><span class="nav-ico">⚙</span>Settings</div>
+      <div class="sidebar-foot"><div class="user"><span class="avatar">AS</span><div><div style="font-size:12px;font-weight:700">Asha Singh</div><small>HR Administrator</small></div></div></div>
+    </aside>
+    <main class="main">
+      <div class="topbar"><div class="crumb">Operations / <b>Today</b></div><div class="top-actions"><button class="icon-btn">☾</button><button class="icon-btn">?</button></div></div>
+      <div class="content">
+        <div class="heading">
+          <div><h2>Good morning, Asha</h2><p>Monday, 26 September · India Standard Time · Next run at 11:30 AM</p></div>
+          <div class="actions"><button class="btn">Review defaulters</button><button class="btn primary">↻ Run now</button></div>
+        </div>
+        <div class="metrics">
+          <div class="card metric"><div class="metric-top"><span class="label">Expected</span><span class="pill neutral">Roster</span></div><strong>500</strong><small>Active employees</small></div>
+          <div class="card metric"><div class="metric-top"><span class="label">Submitted</span><span class="change">+38 since 10:00</span></div><strong>481</strong><small>96.2% response rate</small></div>
+          <div class="card metric"><div class="metric-top"><span class="label">Defaulters</span><span class="pill warn"><i class="dot"></i>Action</span></div><strong>19</strong><small>Down from 57</small></div>
+          <div class="card metric"><div class="metric-top"><span class="label">RTO exceptions</span><span class="pill bad"><i class="dot"></i>HR only</span></div><strong>12</strong><small>Scheduled, selected No</small></div>
+        </div>
+        <div class="dash-grid">
+          <div class="card">
+            <div class="card-head"><div><h3>Today’s automation</h3><span>Fresh reconciliation at every slot</span></div><span class="pill good"><i class="dot"></i>Healthy</span></div>
+            <div class="timeline">
+              <div class="run-row"><b>10:00</b><i class="run-node"></i><div><b>First reminder posted</b><span class="sub">57 defaulters · Teams delivery confirmed</span></div><span class="pill good">Delivered</span></div>
+              <div class="run-row"><b>10:45</b><i class="run-node"></i><div><b>Updated reminder posted</b><span class="sub">19 defaulters · 38 new submissions</span></div><span class="pill good">Delivered</span></div>
+              <div class="run-row"><b>11:30</b><i class="run-node next"></i><div><b>Final reminder</b><span class="sub">Starts in 23 minutes</span></div><span class="pill neutral">Next</span></div>
+              <div class="run-row"><b>13:00</b><i class="run-node pending"></i><div><b>Summary &amp; HR exception report</b><span class="sub">Aggregate Teams post + restricted file</span></div><span class="pill neutral">Pending</span></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-head"><div><h3>Connected sources</h3><span>Last checked 10:46 AM</span></div></div>
+            <div class="sources">
+              <div class="source"><div><b>Employee roster</b><small>SharePoint List · 500 active</small></div><span class="pill good"><i class="dot"></i>Connected</span></div>
+              <div class="source"><div><b>RTO responses</b><small>Microsoft Forms · 481 valid</small></div><span class="pill good"><i class="dot"></i>Connected</span></div>
+              <div class="source"><div><b>Common Teams group</b><small>Project RTO Updates</small></div><span class="pill good"><i class="dot"></i>Connected</span></div>
+              <div class="source"><div><b>HR restricted folder</b><small>SharePoint · RTO Exceptions</small></div><span class="pill good"><i class="dot"></i>Connected</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="alert-strip"><div><b>2 responses need HR review</b><br><span>One unknown employee ID and one missing WFH reason will be excluded from automatic classification.</span></div><button class="btn">Review anomalies</button></div>
+      </div>
+    </main>
+  </div>
+</section>
+
+<section class="screen-wrap">
+  <div class="screen-band">Screen 3 of 4 · Run Detail · Investigate employee-level classifications and source evidence</div>
+  <div class="screen shell">
+    <aside class="sidebar">
+      <div class="logo"><span class="logo-mark">R</span> RTO Compliance</div>
+      <div class="nav-title">OPERATIONS</div>
+      <div class="nav-item"><span class="nav-ico">◫</span>Today</div>
+      <div class="nav-item active"><span class="nav-ico">≡</span>Runs</div>
+      <div class="nav-item"><span class="nav-ico">▤</span>Reports</div>
+      <div class="sidebar-foot"><div class="user"><span class="avatar">AS</span><div><div style="font-size:12px;font-weight:700">Asha Singh</div><small>HR Administrator</small></div></div></div>
+    </aside>
+    <main class="main">
+      <div class="topbar"><div class="crumb">Runs / 26 Sep / <b>10:45 AM</b></div><div class="top-actions"><button class="icon-btn">☾</button><button class="btn">Export snapshot</button></div></div>
+      <div class="content">
+        <div class="heading">
+          <div><h2>10:45 AM reconciliation</h2><p>Completed in 42 seconds · 500 roster records · 481 valid responses</p></div>
+          <span class="pill good"><i class="dot"></i>Delivered to Teams</span>
+        </div>
+        <div class="filterbar"><div class="search">⌕ &nbsp; Search employee ID or name</div><button class="filter">Classification: Defaulter ▾</button><button class="filter">All leads ▾</button><button class="filter">All locations ▾</button></div>
+        <div class="run-layout">
+          <div class="card table-card">
+            <table>
+              <thead><tr><th>Employee</th><th>Lead</th><th>Scheduled</th><th>Submitted</th><th>WFO</th><th>Classification</th></tr></thead>
+              <tbody>
+                <tr class="selected"><td><span class="person">Priya Nair</span><span class="sub">E105 · Bengaluru</span></td><td>Arun K.</td><td>Yes</td><td>—</td><td>—</td><td><span class="pill bad">Defaulter</span></td></tr>
+                <tr><td><span class="person">Vikram Shah</span><span class="sub">E188 · Pune</span></td><td>Megha S.</td><td>No</td><td>—</td><td>—</td><td><span class="pill bad">Defaulter</span></td></tr>
+                <tr><td><span class="person">Nisha Rao</span><span class="sub">E241 · Hyderabad</span></td><td>Arun K.</td><td>Yes</td><td>—</td><td>—</td><td><span class="pill bad">Defaulter</span></td></tr>
+                <tr><td><span class="person">Daniel Paul</span><span class="sub">E302 · Chennai</span></td><td>Sarah J.</td><td>Yes</td><td>—</td><td>—</td><td><span class="pill bad">Defaulter</span></td></tr>
+                <tr><td><span class="person">Kavya Menon</span><span class="sub">E334 · Bengaluru</span></td><td>Megha S.</td><td>No</td><td>—</td><td>—</td><td><span class="pill bad">Defaulter</span></td></tr>
+                <tr><td><span class="person">Amit Bose</span><span class="sub">E376 · Pune</span></td><td>Sarah J.</td><td>Yes</td><td>—</td><td>—</td><td><span class="pill bad">Defaulter</span></td></tr>
+              </tbody>
+            </table>
+          </div>
+          <aside class="card detail">
+            <h3>Priya Nair</h3><p>E105 · Bengaluru · Arun K.</p>
+            <div class="explain"><b>Why is Priya a defaulter?</b><p>Priya is active and expected to submit today. No valid response matching employee ID E105 was available at 10:45 AM.</p></div>
+            <div class="fact"><span>Roster status</span><b>Active</b></div>
+            <div class="fact"><span>Scheduled today</span><b>Yes</b></div>
+            <div class="fact"><span>Response found</span><b>No</b></div>
+            <div class="fact"><span>Previous reminder</span><b>10:00 AM</b></div>
+            <div class="fact"><span>Current action</span><b>Included in Teams list</b></div>
+            <div class="privacy">Classification uses employee ID as the authoritative key. No attendance reason is inferred when a response is missing.</div>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </div>
+</section>
+
+<section class="screen-wrap">
+  <div class="screen-band">Screen 4 of 4 · Reports &amp; Audit · Retrieve restricted files and verify every automated action</div>
+  <div class="screen shell">
+    <aside class="sidebar">
+      <div class="logo"><span class="logo-mark">R</span> RTO Compliance</div>
+      <div class="nav-title">OPERATIONS</div>
+      <div class="nav-item"><span class="nav-ico">◫</span>Today</div>
+      <div class="nav-item"><span class="nav-ico">≡</span>Runs</div>
+      <div class="nav-item active"><span class="nav-ico">▤</span>Reports</div>
+      <div class="nav-title">ADMIN</div>
+      <div class="nav-item"><span class="nav-ico">⌁</span>Audit log</div>
+      <div class="sidebar-foot"><div class="user"><span class="avatar">AS</span><div><div style="font-size:12px;font-weight:700">Asha Singh</div><small>HR Administrator</small></div></div></div>
+    </aside>
+    <main class="main">
+      <div class="topbar"><div class="crumb">Operations / <b>Reports</b></div><div class="top-actions"><button class="icon-btn">☾</button><button class="filter">September 2026 ▾</button></div></div>
+      <div class="content">
+        <div class="heading"><div><h2>Reports &amp; audit</h2><p>Restricted HR files, final summaries, and delivery evidence</p></div><button class="btn primary">Generate manual report</button></div>
+        <div class="summary-banner">
+          <div><h3>Today’s final report is ready</h3><p>Generated at 1:00 PM from 493 valid responses. Exception reasons are restricted to HR.</p></div>
+          <div class="banner-stats"><div class="banner-stat"><strong>493</strong><small>Submitted</small></div><div class="banner-stat"><strong>276</strong><small>WFO</small></div><div class="banner-stat"><strong>217</strong><small>WFH</small></div><div class="banner-stat"><strong>12</strong><small>Exceptions</small></div></div>
+        </div>
+        <div class="report-grid">
+          <div class="card">
+            <div class="card-head"><div><h3>Generated files</h3><span>Stored in restricted SharePoint</span></div><button class="filter">All statuses ▾</button></div>
+            <div class="report-list">
+              <div class="report-row"><span class="file-icon">XLSX</span><div><b>RTO Exceptions — 26 Sep 2026</b><small>12 named exceptions · WFH reasons included · HR restricted</small></div><div style="text-align:right"><span class="pill good">Delivered</span><span class="sub">1:01 PM</span></div></div>
+              <div class="report-row"><span class="file-icon">XLSX</span><div><b>RTO Exceptions — 25 Sep 2026</b><small>9 named exceptions · WFH reasons included · HR restricted</small></div><div style="text-align:right"><span class="pill good">Delivered</span><span class="sub">Yesterday</span></div></div>
+              <div class="report-row"><span class="file-icon">XLSX</span><div><b>RTO Exceptions — 24 Sep 2026</b><small>15 named exceptions · WFH reasons included · HR restricted</small></div><div style="text-align:right"><span class="pill good">Delivered</span><span class="sub">24 Sep</span></div></div>
+              <div class="report-row"><span class="file-icon">XLSX</span><div><b>RTO Exceptions — 23 Sep 2026</b><small>11 named exceptions · WFH reasons included · HR restricted</small></div><div style="text-align:right"><span class="pill warn">Retried</span><span class="sub">23 Sep</span></div></div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-head"><div><h3>Today’s audit trail</h3><span>All times IST</span></div><span class="pill neutral">14 events</span></div>
+            <div class="audit-list">
+              <div class="audit"><div class="audit-line"></div><div><b>HR exception file delivered</b><small>1:01 PM · Restricted SharePoint link sent to HR Operations</small></div></div>
+              <div class="audit"><div class="audit-line"></div><div><b>Final aggregate summary posted</b><small>1:00 PM · Project RTO Updates · No reasons included</small></div></div>
+              <div class="audit"><div class="audit-line"></div><div><b>Final reconciliation completed</b><small>1:00 PM · 500 expected · 493 submitted · 12 exceptions</small></div></div>
+              <div class="audit"><div class="audit-line"></div><div><b>Defaulter reminder delivered</b><small>11:30 AM · 7 employees listed</small></div></div>
+              <div class="audit"><div class="audit-line"></div><div><b>Roster and Forms sources verified</b><small>11:29 AM · Both sources complete</small></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+</section>
+
+</body>
+</html>

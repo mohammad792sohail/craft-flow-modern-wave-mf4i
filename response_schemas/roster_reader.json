@@ -1,0 +1,152 @@
+{
+  "properties": {
+    "additionalProperties": false,
+    "required": [
+      "status",
+      "result",
+      "metadata"
+    ],
+    "result": {
+      "metadata": {
+        "additionalProperties": false,
+        "properties": {
+          "agent_name": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "agent_name",
+          "timestamp"
+        ],
+        "type": "object"
+      },
+      "properties": {
+        "additionalProperties": false,
+        "anomalies": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "employee_id": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "severity": {
+                "enum": [
+                  "info",
+                  "warning",
+                  "error"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "code",
+              "severity",
+              "message",
+              "employee_id"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "business_date": {
+          "type": "string"
+        },
+        "counts": {
+          "additionalProperties": false,
+          "properties": {
+            "active_employees": {
+              "type": "integer"
+            },
+            "scheduled_for_office": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "active_employees",
+            "scheduled_for_office"
+          ],
+          "type": "object"
+        },
+        "employees": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "active": {
+                "type": "boolean"
+              },
+              "employee_id": {
+                "type": "string"
+              },
+              "employee_name": {
+                "type": "string"
+              },
+              "lead_name": {
+                "type": "string"
+              },
+              "location": {
+                "type": "string"
+              },
+              "rotation_schedule": {
+                "type": "string"
+              },
+              "scheduled_for_office": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "employee_id",
+              "employee_name",
+              "lead_name",
+              "location",
+              "rotation_schedule",
+              "scheduled_for_office",
+              "active"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "required": [
+          "business_date",
+          "source",
+          "source_reference",
+          "source_complete",
+          "retrieved_at",
+          "employees",
+          "counts",
+          "anomalies"
+        ],
+        "retrieved_at": {
+          "type": "string"
+        },
+        "source": {
+          "type": "string"
+        },
+        "source_complete": {
+          "type": "boolean"
+        },
+        "source_reference": {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "status": {
+      "enum": [
+        "success",
+        "error"
+      ],
+      "type": "string"
+    }
+  },
+  "type": "object"
+}

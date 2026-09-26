@@ -1,0 +1,248 @@
+{
+  "properties": {
+    "additionalProperties": false,
+    "required": [
+      "status",
+      "result",
+      "metadata"
+    ],
+    "result": {
+      "metadata": {
+        "additionalProperties": false,
+        "properties": {
+          "agent_name": {
+            "type": "string"
+          },
+          "timestamp": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "agent_name",
+          "timestamp"
+        ],
+        "type": "object"
+      },
+      "properties": {
+        "additionalProperties": false,
+        "anomalies": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "code": {
+                "type": "string"
+              },
+              "employee_id": {
+                "type": "string"
+              },
+              "message": {
+                "type": "string"
+              },
+              "severity": {
+                "enum": [
+                  "info",
+                  "warning",
+                  "error"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "code",
+              "severity",
+              "message",
+              "employee_id"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "business_date": {
+          "type": "string"
+        },
+        "counts": {
+          "additionalProperties": false,
+          "properties": {
+            "expected_employees": {
+              "type": "integer"
+            },
+            "outstanding_defaulters": {
+              "type": "integer"
+            },
+            "scheduled_office_exceptions": {
+              "type": "integer"
+            },
+            "unknown_or_invalid_responses": {
+              "type": "integer"
+            },
+            "valid_submissions": {
+              "type": "integer"
+            },
+            "wfo_no": {
+              "type": "integer"
+            },
+            "wfo_yes": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "expected_employees",
+            "valid_submissions",
+            "outstanding_defaulters",
+            "wfo_yes",
+            "wfo_no",
+            "scheduled_office_exceptions",
+            "unknown_or_invalid_responses"
+          ],
+          "type": "object"
+        },
+        "defaulters": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "employee_id": {
+                "type": "string"
+              },
+              "employee_name": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "employee_id",
+              "employee_name"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "deliveries": {
+          "items": {
+            "additionalProperties": false,
+            "properties": {
+              "destination": {
+                "enum": [
+                  "common_teams",
+                  "hr_only_teams",
+                  "sharepoint_hr_folder"
+                ],
+                "type": "string"
+              },
+              "external_reference": {
+                "type": "string"
+              },
+              "kind": {
+                "enum": [
+                  "defaulter_reminder",
+                  "aggregate_summary",
+                  "exception_report",
+                  "failure_alert"
+                ],
+                "type": "string"
+              },
+              "status": {
+                "enum": [
+                  "sent",
+                  "blocked",
+                  "failed",
+                  "skipped"
+                ],
+                "type": "string"
+              }
+            },
+            "required": [
+              "destination",
+              "kind",
+              "status",
+              "external_reference"
+            ],
+            "type": "object"
+          },
+          "type": "array"
+        },
+        "exception_report": {
+          "additionalProperties": false,
+          "properties": {
+            "created": {
+              "type": "boolean"
+            },
+            "file_reference": {
+              "type": "string"
+            },
+            "recipient": {
+              "type": "string"
+            },
+            "status": {
+              "enum": [
+                "created",
+                "sent",
+                "blocked",
+                "failed",
+                "not_applicable"
+              ],
+              "type": "string"
+            }
+          },
+          "required": [
+            "created",
+            "file_reference",
+            "recipient",
+            "status"
+          ],
+          "type": "object"
+        },
+        "next_run_notice": {
+          "type": "string"
+        },
+        "publication_blocked": {
+          "type": "boolean"
+        },
+        "run_slot": {
+          "enum": [
+            "10:00",
+            "10:45",
+            "11:30",
+            "13:00",
+            "manual"
+          ],
+          "type": "string"
+        },
+        "source_complete": {
+          "type": "boolean"
+        },
+        "summary_message": {
+          "type": "string"
+        },
+        "trigger": {
+          "enum": [
+            "scheduled",
+            "manual"
+          ],
+          "type": "string"
+        }
+      },
+      "required": [
+        "business_date",
+        "run_slot",
+        "trigger",
+        "source_complete",
+        "publication_blocked",
+        "counts",
+        "defaulters",
+        "anomalies",
+        "deliveries",
+        "exception_report",
+        "summary_message",
+        "next_run_notice"
+      ],
+      "type": "object"
+    },
+    "status": {
+      "enum": [
+        "success",
+        "error"
+      ],
+      "type": "string"
+    }
+  },
+  "type": "object"
+}
